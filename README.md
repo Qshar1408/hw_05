@@ -63,11 +63,26 @@
 
 ![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_008.png)
 
-4. Закоммитьте в ветку 'terraform-05' все изменения.
-5. Откройте в проекте terraform console, а в другом окне из этой же директории попробуйте запустить terraform apply.
-6. Пришлите ответ об ошибке доступа к state.
-7. Принудительно разблокируйте state. Пришлите команду и вывод.
+3. Закоммитьте в ветку 'terraform-05' все изменения.
+4. Откройте в проекте terraform console, а в другом окне из этой же директории попробуйте запустить terraform apply.
+5. Пришлите ответ об ошибке доступа к state.
 
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_009.png)
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_010.png)
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_011.png)
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_012.png)
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_013.png)
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_014.png)
+
+
+6. Принудительно разблокируйте state. Пришлите команду и вывод.
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_015.png)
 
 ------
 ### Задание 3  
