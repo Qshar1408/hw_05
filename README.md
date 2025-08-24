@@ -88,7 +88,10 @@
 ### Задание 3  
 
 1. Сделайте в GitHub из ветки 'terraform-05' новую ветку 'terraform-hotfix'.
-2. Проверье код с помощью tflint и checkov, исправьте все предупреждения и ошибки в 'terraform-hotfix', сделайте коммит.
+
+#### Ветка terraform-hotfix [Ветка terraform-hotfix](https://github.com/Qshar1408/hw_05/tree/terraform-hotfix)
+
+3. Проверье код с помощью tflint и checkov, исправьте все предупреждения и ошибки в 'terraform-hotfix', сделайте коммит.
 
 ![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_016.png)
 
