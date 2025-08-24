@@ -1,0 +1,75 @@
+qshar@qsharpcub05:~/hw_05$ docker pull bridgecrew/checkov
+
+       _               _
+   ___| |__   ___  ___| | _______   __
+  / __| '_ \ / _ \/ __| |/ / _ \ \ / /
+ | (__| | | |  __/ (__|   < (_) \ V /
+  \___|_| |_|\___|\___|_|\_\___/ \_/
+
+By Prisma Cloud | version: 3.2.464 
+
+terraform scan results:
+
+Passed checks: 1, Failed checks: 4, Skipped checks: 0
+
+Check: CKV_YC_4: "Ensure compute instance does not have serial console enabled."
+	PASSED for resource: module.test-vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+	Calling File: /main.tf:41-57
+Check: CKV_YC_2: "Ensure compute instance does not have public IP."
+	FAILED for resource: module.test-vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+	Calling File: /main.tf:41-57
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_YC_11: "Ensure security group is assigned to network interface."
+	FAILED for resource: module.test-vm.yandex_compute_instance.vm[0]
+	File: /.external_modules/github.com/udjin10/yandex_compute_instance/main/main.tf:24-73
+	Calling File: /main.tf:41-57
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.
+Check: CKV_TF_1: "Ensure Terraform module sources use a commit hash"
+	FAILED for resource: test-vm
+	File: /main.tf:41-57
+
+		41 | module "test-vm" {
+		42 |   source          = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+		43 |   env_name        = "develop"
+		44 |   network_id      = module.vpc_dev.network_id
+		45 |   subnet_zones    = ["ru-central1-a"]
+		46 |   subnet_ids      = [module.vpc_dev.subnet_id]
+		47 |   instance_name   = "web"
+		48 |   instance_count  = 1
+		49 |   image_family    = "ubuntu-2004-lts"
+		50 |   public_ip       = true
+		51 | 
+		52 |   metadata = {
+		53 |       user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
+		54 |       serial-port-enable = 1
+		55 |   }
+		56 | 
+		57 | }
+
+Check: CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
+	FAILED for resource: test-vm
+	File: /main.tf:41-57
+
+		41 | module "test-vm" {
+		42 |   source          = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
+		43 |   env_name        = "develop"
+		44 |   network_id      = module.vpc_dev.network_id
+		45 |   subnet_zones    = ["ru-central1-a"]
+		46 |   subnet_ids      = [module.vpc_dev.subnet_id]
+		47 |   instance_name   = "web"
+		48 |   instance_count  = 1
+		49 |   image_family    = "ubuntu-2004-lts"
+		50 |   public_ip       = true
+		51 | 
+		52 |   metadata = {
+		53 |       user-data          = data.template_file.cloudinit.rendered #Для демонстрации №3
+		54 |       serial-port-enable = 1
+		55 |   }
+		56 | 
+		57 | }
+
+
