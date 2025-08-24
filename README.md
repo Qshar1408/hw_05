@@ -51,6 +51,9 @@
 ### Задание 2
 
 1. Возьмите ваш GitHub-репозиторий с **выполненным ДЗ 4** в ветке 'terraform-04' и сделайте из него ветку 'terraform-05'.
+
+#### Ветка terraform-05 [Ветка terraform-05](https://github.com/Qshar1408/hw_05/tree/terraform-05)
+
 2. Повторите демонстрацию лекции: настройте YDB, S3 bucket, yandex service account, права доступа и мигрируйте state проекта в S3 с блокировками. Предоставьте скриншоты процесса в качестве ответа.
 
 ![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_004.png)
@@ -91,7 +94,7 @@
 
 #### Ветка terraform-hotfix [Ветка terraform-hotfix](https://github.com/Qshar1408/hw_05/tree/terraform-hotfix)
 
-3. Проверье код с помощью tflint и checkov, исправьте все предупреждения и ошибки в 'terraform-hotfix', сделайте коммит.
+2. Проверье код с помощью tflint и checkov, исправьте все предупреждения и ошибки в 'terraform-hotfix', сделайте коммит.
 
 ![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_016.png)
 
