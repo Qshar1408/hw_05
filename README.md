@@ -105,6 +105,55 @@
 - type=string, description="ip-адрес" — проверка, что значение переменной содержит верный IP-адрес с помощью функций cidrhost() или regex(). Тесты:  "192.168.0.1" и "1920.1680.0.1";
 - type=list(string), description="список ip-адресов" — проверка, что все адреса верны. Тесты:  ["192.168.0.1", "1.1.1.1", "127.0.0.1"] и ["192.168.0.1", "1.1.1.1", "1270.0.0.1"].
 
+#### Решение:
+
+```bash
+variable "ip_address" {
+
+  description = "ip-адрес"
+
+  type        = string
+
+  default = "192.168.0.1"
+
+  validation {
+
+    condition     = can(regex("^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$", var.ip_address))
+
+    error_message = "Неправильный ip-адрес"
+
+  }
+
+}
+
+
+
+variable "ip_address_list" {
+
+  description = "список ip-адресов"
+
+  type        = list(string)
+
+  default     = ["192.168.0.1", "1.1.1.1", "127.0.0.1"]
+
+  validation {
+
+    condition = alltrue([for ip in var.ip_address_list: can(regex("^((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])\\.){3}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[1-9]?[0-9])$", ip))])
+
+    error_message = "Неправильный список ip-адресов"
+
+  }
+
+}
+```
+
+
+   * Если в адресах нет ошибок, то terraform console выведет пустой результат.
+   * Если в адресах есть ошибки, то terraform console выведет результат валидации:
+     
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_017.png)
+
+
 ## Дополнительные задания (со звёздочкой*)
 
 **Настоятельно рекомендуем выполнять все задания со звёздочкой.** Их выполнение поможет глубже разобраться в материале.   
@@ -133,17 +182,51 @@ variable "in_the_end_there_can_be_only_one" {
     }
 }
 ```
+
+#### Решение
+
+```bash
+variable "string_check" {
+  type        = string
+  description = "любая строка"
+  default     = "test-string"
+
+  validation {
+      condition = var.string_check == lower(var.string_check)
+      error_message = "В строке не должно быть символов верхнего регистра"
+  }
+}
+
+
+variable "in_the_end_there_can_be_only_one" {
+    description="Who is better Connor or Duncan?"
+    type = object({
+        Dunkan = optional(bool)
+        Connor = optional(bool)
+    })
+
+    default = {
+        Dunkan = true
+        Connor = false
+    }
+
+    validation {
+        error_message = "There can be only one MacLeod"
+        condition = var.in_the_end_there_can_be_only_one.Dunkan !=  var.in_the_end_there_can_be_only_one.Connor
+    }
+}
+```
+
+   * Если в валидации нет ошибок, то terraform console выведет пустой результат.
+   * Если в строке будут символы верхнего регистра, то увидим ошибку в terraform console:
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_018.png)
+
+   * Если значение Dunkan и Connor будет true или false, то увидим ошибку в terraform console:
+
+![hw_05](https://github.com/Qshar1408/hw_05/blob/main/img/hw_05_019.png)
+
 ------
-### Задание 6*
-
-1. Настройте любую известную вам CI/CD-систему. Если вы ещё не знакомы с CI/CD-системами, настоятельно рекомендуем вернуться к этому заданию после изучения Jenkins/Teamcity/Gitlab.
-2. Скачайте с её помощью ваш репозиторий с кодом и инициализируйте инфраструктуру.
-3. Уничтожьте инфраструктуру тем же способом.
-
-
-------
-### Задание 7*
-1. Настройте отдельный terraform root модуль, который будет создавать YDB, s3 bucket для tfstate и сервисный аккаунт с необходимыми правами. 
 
 ### Правила приёма работы
 
